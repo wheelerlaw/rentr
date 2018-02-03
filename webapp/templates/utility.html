@@ -1,0 +1,15 @@
+<h2>
+    {{ utility.name }}
+</h2>
+<table>
+    <tr>
+        <th>Charge</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    {% for bill in bills %}
+        <td>${{ bill.charge }}</td>
+        <td>{{ bill.start_date }}</td>
+        <td>{{ bill.end_date }}</td>
+    {% endfor %}
+</table>
