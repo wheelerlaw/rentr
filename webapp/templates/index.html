@@ -11,10 +11,11 @@
     Month:
 </h3>
 <form action="{% url 'month' %}" method="get">
-    <select>
-        {% for utility in utilities %}
-            <option name="{{ utility.name }}">{{ utility.name }}</option>
-        {% endfor %}
-    </select>
+{#    <select>#}
+{#        {% for utility in utilities %}#}
+{#            <option name="{{ utility.name }}">{{ utility.name }}</option>#}
+{#        {% endfor %}#}
+{#    </select>#}
+    <input type="month" name="ym">
     <input type="submit" value="Submit">
 </form>

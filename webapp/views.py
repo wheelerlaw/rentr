@@ -16,4 +16,5 @@ def utility(request, utility_id):
 
 
 def month(request):
-    return
+    occupants = Occupant.objects.
+    return render(request, 'month.html', {})
