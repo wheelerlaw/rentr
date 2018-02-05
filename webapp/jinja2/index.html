@@ -1,5 +1,15 @@
 <title>Home | Renty</title>
 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/jquery-ui-1.12.1.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/MonthPicker.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}"/>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.12.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.maskedinput-1.4.1.min.js' %}"></script>
+<script src="{% static 'js/MonthPicker.min.js' %}"></script>
+
+
+
 <h3>
     Utilities:
 </h3>
@@ -13,18 +23,17 @@
     Month:
 </h3>
 <form action="{% url 'month' %}" method="get">
-    <label for="monthPicker">Select month:</label><input id='monthPicker' type="text" name="month">
-    <img class="icon" src="{% static 'images/icon.gif' %}"/>
+    Select month: <br/>
+    <input id='monthPicker' type="text" name="month" class="month-year-input" placeholder="yyyy-MM">
     <input type="submit" value="Submit">
 </form>
 
-<link rel="stylesheet" type="text/css" href="{% static 'styles/jquery-ui-1.12.1.min.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'styles/MonthPicker.min.css' %}"/>
-<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'js/jquery-ui-1.12.1.min.js' %}"></script>
-<script src="{% static 'js/jquery.maskedinput-1.4.1.min.js' %}"></script>
-<script src="{% static 'js/MonthPicker.min.js' %}"></script>
-
 <script>
-    $('#monthPicker').MonthPicker()
+    $('#monthPicker').MonthPicker({
+        Button: '<img class="icon" src="{% static 'images/icon.gif' %}" />',
+        MonthFormat: 'yy-mm',
+        UseInputMask: true
+    })
 </script>
+
+
