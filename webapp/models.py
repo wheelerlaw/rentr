@@ -21,9 +21,12 @@ class Bill(models.Model):
         start = latest_date(date(year, month, 1), self.start_date)
         end = earliest_date(date(year, month, days_in_month), self.end_date)
 
-        days_for_rent = (end-start).days
+        days_for_rent = (end-start).days + 1
 
         return self.charge / days_in_month * days_for_rent
+
+    def get_days_for_billing_cycle(self):
+        return (self.end_date - self.start_date).days + 1
 
     def __str__(self):
         return str(self.utility.name) + ": " + str(self.charge) + \
@@ -42,7 +45,7 @@ class Occupant(models.Model):
         start = latest_date(date(year, month, 1), self.start_date)
         end = earliest_date(date(year, month, days_in_month), self.end_date)
 
-        days_for_rent = (end-start).days
+        days_for_rent = (end-start).days + 1
 
         return self.rent / days_in_month * days_for_rent
 
@@ -55,6 +58,7 @@ def earliest_date(date1, date2):
         return date1
     else:
         return date2
+
 
 def latest_date(date1, date2):
     if date1 > date2:

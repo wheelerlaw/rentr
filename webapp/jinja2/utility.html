@@ -8,8 +8,10 @@
         <th>End Date</th>
     </tr>
     {% for bill in bills %}
-        <td>${{ bill.charge }}</td>
-        <td>{{ bill.start_date }}</td>
-        <td>{{ bill.end_date }}</td>
+        <tr>
+            <td>${{ bill.charge }}</td>
+            <td>{{ bill.start_date }}</td>
+            <td>{{ bill.end_date }}</td>
+        </tr>
     {% endfor %}
 </table>

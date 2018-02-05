@@ -1,0 +1,53 @@
+<style>
+    .border-bottom {
+        border-bottom: thin solid;
+        border-color: black;
+    }
+
+    .border-top {
+        border-top: thin solid;
+        border-color: black;
+    }
+</style>
+<title>{{ month_name }} | Renty</title>
+
+<a href="{% url 'index' %}">Back</a>
+
+<div>
+    <a href="{% url 'month' %}?month={{ prev_year_month }}">{{ prev_month_name }}</a>
+    <h2 style="display: inline-block">{{ month_name }}</h2>
+    <a href="{% url 'month' %}?month={{ next_year_month }}">{{ next_month_name }}</a>
+</div>
+
+<table>
+    <tr>
+        <th></th>
+        {% for occupant in occupants %}
+            <th>{{ occupant.name }}</th>
+        {% endfor %}
+        <th>Total</th>
+    </tr>
+    <tr>
+        <th class="border-bottom">Rent</th>
+        {% for occupant in occupants %}
+            <td class="border-bottom">{{ charges[occupant.name].rent|round(2) }}</td>
+        {% endfor %}
+        <td class="border-bottom">{{ charges['total'].rent|round(2) }}</td>
+    </tr>
+    {% for utility in utilities %}
+        <tr>
+            <th>{{ utility }}</th>
+            {% for occupant in occupants %}
+                <td>{{ charges[occupant.name][utility]|round(2) }}</td>
+            {% endfor %}
+            <td>{{ charges['total'][utility]|round(2) }}</td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <th class="border-top">Utilties Total</th>
+        {% for occupant in occupants %}
+            <td class="border-top">{{ charges[occupant.name]['total']|round(2) }}</td>
+        {% endfor %}
+        <td class="border-top">{{ charges['total']['total']|round(2) }}</td>
+    </tr>
+</table>
