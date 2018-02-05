@@ -1,3 +1,5 @@
+<title>Home | Renty</title>
+
 <h3>
     Utilities:
 </h3>
@@ -11,11 +13,18 @@
     Month:
 </h3>
 <form action="{% url 'month' %}" method="get">
-{#    <select>#}
-{#        {% for utility in utilities %}#}
-{#            <option name="{{ utility.name }}">{{ utility.name }}</option>#}
-{#        {% endfor %}#}
-{#    </select>#}
-    <input type="month" name="month">
+    <label for="monthPicker">Select month:</label><input id='monthPicker' type="text" name="month">
+    <img class="icon" src="{% static 'images/icon.gif' %}"/>
     <input type="submit" value="Submit">
 </form>
+
+<link rel="stylesheet" type="text/css" href="{% static 'styles/jquery-ui-1.12.1.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/MonthPicker.min.css' %}"/>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.12.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.maskedinput-1.4.1.min.js' %}"></script>
+<script src="{% static 'js/MonthPicker.min.js' %}"></script>
+
+<script>
+    $('#monthPicker').MonthPicker()
+</script>
