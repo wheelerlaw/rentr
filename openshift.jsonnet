@@ -4,6 +4,16 @@ local projectName = "renty";
 local pythonVersion = "3.6";
 
 [
+    {
+    kind: "ImageStream",
+    apiVersion: "v1",
+    metadata: {
+      name: appName,
+      annotations: {
+        description: "Keeps track of changes in the application image"
+      }
+    }
+  },
   {
     kind: "BuildConfig",
     apiVersion: "v1",
@@ -20,8 +30,7 @@ local pythonVersion = "3.6";
         git: {
           uri: "https://github.com/wheelerlaw/renty.git",
           // ref: "master"
-        },
-        contextDir: "${CONTEXT_DIR}"
+        }
       },
       strategy: {
         type: "Source",
@@ -31,12 +40,6 @@ local pythonVersion = "3.6";
             namespace: "openshift",
             name: "python:" + pythonVersion,
           },
-          // env: [
-          //   {
-          //       name: "PIP_INDEX_URL",
-          //       value: "${PIP_INDEX_URL}"
-          //   }
-          // ]
         }
       },
       output: {
