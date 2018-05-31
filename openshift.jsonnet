@@ -4,7 +4,7 @@ local projectName = "renty";
 local pythonVersion = "3.6";
 
 [
-    {
+  {
     kind: "ImageStream",
     apiVersion: "v1",
     metadata: {
